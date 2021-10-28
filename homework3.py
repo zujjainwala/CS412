@@ -11,17 +11,16 @@ def get_sequences(database, min_sup):
 
         F1 = {}
         count = 0
-        total_count = 0
         for str in substring:
             if str in F1:
-                count += 1
-                F1[str] += count
+                F1[str] = F1[str] + 1
+                count = F1[str]
             else:
-                F1[str] = count
+                F1[str] = 1
 
         #print(substring)
         #print(count)
         print(F1)
     
 
-get_sequences('test.txt', 4)
+get_sequences('test.txt', 1)
