@@ -9,7 +9,7 @@ def get_sequences(database, min_sup):
         end = line.find(">")
         substring = line[begin:end]
 
-        # Finding the frequent-1 itemset
+        # Finding the 1-frequent itemset
         count = 0
         for str in substring:
             if str in F1:
@@ -27,6 +27,14 @@ def get_sequences(database, min_sup):
 
     print(F1)
 
+
+    # Finding the 2-frequent itemset
+    ## Want to loop through the dictionary and make all possible
+    ## combinations between the keys.
+    ## Then I want to go through the original input database and compare those
+    ## and determine if these combinations are in each of the substrings.
+    for key, value in F1.items():
+        return 0
 
 # Testing with a simple database and minimum support
 get_sequences('test.txt', 2)
