@@ -33,8 +33,12 @@ def get_sequences(database, min_sup):
     ## combinations between the keys.
     ## Then I want to go through the original input database and compare those
     ## and determine if these combinations are in each of the substrings.
-    for key, value in F1.items():
-        return 0
+    # for key, value in F1.items():
+    #     return 0
+    altered_input = list(F1)
+    result = [(x,y) for idx, x in enumerate(altered_input) for y in altered_input[idx + 1: ]]
+
+    print(result)
 
 # Testing with a simple database and minimum support
 get_sequences('test.txt', 2)
