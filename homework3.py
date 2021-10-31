@@ -17,7 +17,7 @@ def get_sequences(database, min_sup):
                 count = F1[str]
             else:
                 F1[str] = 1
-
+    
     print(F1)
 
     # Prune itemsets that do not meet min support
@@ -35,10 +35,22 @@ def get_sequences(database, min_sup):
     ## and determine if these combinations are in each of the substrings.
     # for key, value in F1.items():
     #     return 0
+    F2 = {}
     altered_input = list(F1)
     result = [(x,y) for idx, x in enumerate(altered_input) for y in altered_input[idx + 1: ]]
+    result = [ x+y for (x, y) in result]
 
-    print(result)
+    # print(result)
+    for x in result:
+        for line in lines:
+            begin = line.find("<") + len("<")
+            end = line.find(">")
+            substring = line[begin:end]
+            
+            if x in substring:
+                print('Yes', x, substring)
+            else:
+                print('No', x, substring)
 
 # Testing with a simple database and minimum support
 get_sequences('test.txt', 2)
