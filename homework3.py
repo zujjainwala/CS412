@@ -10,11 +10,9 @@ def get_sequences(database, min_sup):
         substring = line[begin:end]
 
         # Finding the 1-frequent itemset
-        count = 0
         for str in substring:
             if str in F1:
                 F1[str] = F1[str] + 1
-                count = F1[str]
             else:
                 F1[str] = 1
     
@@ -25,7 +23,7 @@ def get_sequences(database, min_sup):
     for x in keys:
         del F1[x]
 
-    print(F1)
+    return(F1)
 
 
     # Finding the 2-frequent itemset
@@ -39,18 +37,22 @@ def get_sequences(database, min_sup):
     altered_input = list(F1)
     result = [(x,y) for idx, x in enumerate(altered_input) for y in altered_input[idx + 1: ]]
     result = [ x+y for (x, y) in result]
-
+    
     # print(result)
     for x in result:
         for line in lines:
             begin = line.find("<") + len("<")
             end = line.find(">")
             substring = line[begin:end]
-            
-            if x in substring:
-                print('Yes', x, substring)
-            else:
-                print('No', x, substring)
+            print(x, substring, x[0], x[1])
+            if x[0] in substring and x[1] in substring:
+                print(substring.index(x[0]), substring.index(x[1]))
+                if substring.index(x[0]) < substring.index(x[1]):
+                    if x in F2:
+                        F2[x] = F2[x] + 1
+                    else:
+                        F2[x] = 1
+    #print(F2)
 
 # Testing with a simple database and minimum support
-get_sequences('test.txt', 2)
+#get_sequences('test.txt', 2)
