@@ -24,7 +24,7 @@ def get_sequences(file, min_sup):
     for x in keys:
         del F1[x]
 
-    print(F1)
+    return(F1)
 
     # Finding the 2-frequent itemset
     ## Want to loop through the dictionary and make all possible
@@ -52,7 +52,7 @@ def get_sequences(file, min_sup):
                         F2[x] = 1
                     else:
                         F2[x] += 1
-    return(F2)
+    print(F2)
 
 
 # Testing with a simple database and minimum support
