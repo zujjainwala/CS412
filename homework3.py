@@ -1,6 +1,6 @@
-def get_sequences(database, min_sup):
+def get_sequences(file, min_sup):
 
-    with open(database) as file_object:
+    with open(file) as file_object:
         lines = file_object.readlines()
 
     F1 = {}
@@ -23,7 +23,7 @@ def get_sequences(database, min_sup):
     for x in keys:
         del F1[x]
 
-    return(F1)
+    print(F1)
 
 
     # Finding the 2-frequent itemset
@@ -44,9 +44,9 @@ def get_sequences(database, min_sup):
             begin = line.find("<") + len("<")
             end = line.find(">")
             substring = line[begin:end]
-            print(x, substring, x[0], x[1])
+            #print(x, substring, x[0], x[1])
             if x[0] in substring and x[1] in substring:
-                print(substring.index(x[0]), substring.index(x[1]))
+                #print(substring.index(x[0]), substring.index(x[1]))
                 if substring.index(x[0]) < substring.index(x[1]):
                     if x in F2:
                         F2[x] = F2[x] + 1
@@ -55,4 +55,4 @@ def get_sequences(database, min_sup):
     #print(F2)
 
 # Testing with a simple database and minimum support
-#get_sequences('test.txt', 2)
+get_sequences('test.txt', 2)
