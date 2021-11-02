@@ -55,7 +55,7 @@ def get_sequences(file, min_sup):
     print(F2)
     merged = F1.copy()
     merged.update(F2)
-    print(merged)
+    return(merged)
 
 
 # Testing with a simple database and minimum support
