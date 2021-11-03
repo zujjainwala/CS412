@@ -85,16 +85,21 @@ def get_sequences(file, min_sup):
             for t in c:
                 combos.append(''.join(t))
 
-        for x in combos:
+        #print(set(combos))
+        for x in set(combos):
             if x in substring:
                 if x not in Fk:
                     Fk[x] = 1
                 else:
                     Fk[x] += 1
-                    
-        Fk = {k:v for k,v in Fk.items() if v >= min_sup}
+
+    #print(combos)
+        
+    Fk = {k:v for k,v in Fk.items() if v >= min_sup}
 
     return(Fk)
+
+    #---------------------------------------------------------
 
     #     # Finding the 1-frequent itemset
     #     for str in substring:
