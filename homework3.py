@@ -91,6 +91,8 @@ def get_sequences(file, min_sup):
                     Fk[x] = 1
                 else:
                     Fk[x] += 1
+                    
+        Fk = {k:v for k,v in Fk.items() if v >= min_sup}
 
     return(Fk)
 
